@@ -1,0 +1,54 @@
+@CHARSET "ISO-8859-1";
+
+#Wrapper{
+	width: 100%;
+}
+
+/**Menu**/
+.menu-principal{
+	width: 90%;
+	background-color: #cccccc;
+	height: 50px;
+}
+.menu-principal ul{
+
+}
+.menu-principal ul li{
+	float: left;
+	background-color: #d9d9d9;
+	list-style: none;
+}
+.menu-principal ul li a{
+	padding: 10px 20px;
+	text-decoration: none;
+}
+
+/**Cuerpo**/
+#Content{
+	clear: both;
+}
+
+.columna-izquierda{
+	width: 70%;
+	float: left;
+	background-color: aliceblue;
+}
+
+.columna-derecha{
+	width: 30%; 
+	float: left;
+	background-color: beige;
+}
+
+/**Footer**/
+#Footer{
+	clear: both;
+}
+.container{
+	background-color: blue;
+	height: 50px;
+}
+.copyright{color: #ffffff;}
+
+/**Formulario**/
+.campo-form{margin: 2%;}
