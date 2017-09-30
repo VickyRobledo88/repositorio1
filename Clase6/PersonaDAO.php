@@ -29,47 +29,28 @@ class PersonaDAO{
 		}
 	}
 	
+	public function listar(){
+		$sentencia=$this->mbd->prepare("select * from Persona");
+		$sentencia->execute(array());
+		$arreglo=array();
+		foreach ($sentencia as $fila){
+			$per= new Persona($fila['tipo'],$fila['Nombre'],$fila['Apellido'],
+					$fila['dni'],$fila['sexo'],$fila['fech_nac'],
+					$fila['estado_civil'],$fila['pasatiempo']);
+			$arreglo[]=$per;
+		}
+		return $arreglo;
+	}
+	
+	
 	public function listarPersonas(){
 		$personas=array();
 		try {
 			foreach($this->mbd->query("SELECT * FROM persona") as $fila) {
-			
-				$nombre=null;
-				$apellido=null;
-				$dni=null;
-				$sexo=null;
-				$fechaNacimiento=null;
-				$estadoCivil=null;
-				$pasatiempos=null;
-				foreach ($fila as $clave => $valor) {
-					
-					switch ($clave){
-										
-						case 'nombre': $nombre=$valor;
-						break;
-						
-						case 'apellido': $apellido=$valor;
-						break;
 
-						case 'dni': $dni=$valor;
-						break;
-						
-						case 'sexo': $sexo=$valor;
-						break;
-						
-						case 'fecha_nacimiento': $fechaNacimiento=$valor;
-						break;
-						
-						case 'estado_civil': $estadoCivil=$valor;
-						break;
-						
-						case 'pasatiempo': $pasatiempos=$valor;
-						break;
-					}
-					
-				}
-				
-				$persona=new Persona($nombre, $apellido, $dni, $sexo, $fechaNacimiento, $estadoCivil, $pasatiempos);
+				$persona= new Persona($fila['nombre'],$fila['apellido'],$fila['dni'],
+						$fila['sexo'],$fila['fecha_nacimiento'],$fila['estado_civil'],
+						$fila['pasatiempo']);
 				$personas[]=$persona;	/*agrego persona a arreglo personas*/
 			}
 			return $personas;
